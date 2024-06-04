@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <title>How to Read MIDI Data From a MIDI Through Port in Python | Jonny's Tutorials</title>
         <meta name="description" content="Learn how to interface a MIDI player with Python using the through port to capture and display incoming MIDI messages in real-time.">
-        <meta name="keywords" content="midi, python, through port, integration, music, project, sync, motor movement, light, LED, automation, control">
+        <meta name="keywords" content="pygame, midi, python, through port, integration, music, project, sync, motor movement, light, LED, automation, control">
         <meta name="author" content="Jonny">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -101,7 +101,7 @@
         <div class="content-container-outer">
             <div class="content-container-header">
                 <h1>Jonny's Tutorials</h1>
-                <h2>Python</h2>
+                <h2>Linux, Python, and so much more!</h2>
             </div>
         </div>
         <div class="content-container-outer">
@@ -112,23 +112,29 @@
                         Reading from the Midi Through Port in Python
                     </h1>
                     <p>
-                        Hello and welcome to Jonny's Tutorials! Today, we will explore how to read MIDI data from a MIDI through port in Python. By the end of this tutorial, you will be able to interface a MIDI player with Python using the through port to capture and display incoming MIDI messages in real-time. This configuration could be used to synchronize audio with lights or motor movements, for example. Whether you are a musician looking to integrate MIDI into your Python projects, or just curious about working with MIDI data in Python, this tutorial is designed to help you achieve your goals.
+                        Hello and welcome to Jonny's Tutorials! Today, we will explore how to read MIDI data from the MIDI through port in Python using PyGame. By the end of this tutorial, you will be able to interface a MIDI player with Python using the through port to capture and display incoming MIDI messages in real-time. This configuration can be used to synchronize audio with lights or motor movements on a Raspberry Pi, for example. Whether you are a musician looking to integrate MIDI into your Python projects, or just curious about working with MIDI data in Python, this tutorial is designed to help you achieve your goals.
                     </p>
+                </div>
+                <div class="section">
                     <h2>
                         Prerequisites
                     </h2>
                     <p>
-                        For this tutorial, we recomment using Debian 12 Bookworm or a compatible version. 
+                        For this tutorial, I recommend using Debian 12 Bookworm or a compatible version.  
                     </p>
+                </div>
+                <div class="section">
                     <h2>MIDI File</h2>
                     <p>
-                        Feel free to use the provided daisy-bell.midi file for testing, accessible under the public domain (CC0).
+                        Click here to download the daisy-bell.midi file for testing, accessible under the public domain (CC0).
                     </p>
                     <center>
                         <a href="daisy-bell.mid">
                             daisy-bell.mid
                         </a>
                     </center>
+                </div>
+                <div class="section">
                     <h2>
                         Installation and Setup
                     </h2>
@@ -136,67 +142,96 @@
                         Open a terminal and execute the following commands to install necessary packages and set up the virtual environment.
                     </p>
                     <p>
-                        1. Install required packages
+                        Update the system
+                    </p>
+                    <div class="terminal">
+                        $ sudo apt-get update
+                    </div>
+                    <p>
+                        Install required packages
                     </p>
                     <div class="terminal">
                         $ sudo apt-get install python3 python3-venv python3-pip
                     </div>
                     <p>
-                        2. Create a virtual environment
+                        Create a folder for the code
+                    </p>
+                    <div class="terminal">
+                        $ mkdir midi-through-python<br />
+                        $ cd midi-through-python
+                    </div>
+                    <p>
+                        Move the midi file you downloaded earlier into the folder.
+                    </p>
+                    <div class="terminal">
+                        $ mv -i ~/Downloads/daisy-bell.mid ./
+                    </div>
+                    <p>
+                        Create a virtual environment
                     </p>
                     <div class="terminal">
                         $ python3 -m venv venv
                     </div>
                     <p>
-                        3. Activate the virtual environment
+                        Activate the virtual environment
                     </p>
                     <div class="terminal">
                         $ source venv/bin/activate
                     </div>
                     <p>
-                        4. Install pygame library.
+                        Install PyGame library.
                     </p>
                     <div class="terminal">
                         $ python3 -m pip install pygame
                     </div>
+                </div>
+                <div class="section">
                     <h2>
-                        Symlink Workaround
+                        ALSA Workaround
                     </h2>
                     <p>
                         (https://github.com/pygame/pygame/issues/3756)
                     </p>
                     <p>
-                        An update to ALSA seems to have moved some files. To allow pygame to locate them, create a symbolic link in the old directory.
+                        PyGame uses ALSA for midi. An update to ALSA seems to have moved some files. To allow PyGame to locate them, create a symbolic link in the old directory.
                     </p>
                     <div class="terminal">
                         $ sudo ln -s /usr/share/alsa /usr/local/share/alsa
                     </div>
+                </div>
+                <div class="section">
                     <h2>
                         Creating the Script
                     </h2>
                     <p>
-                        Type or paste the following into your favorite code editor and save it as midi_through_port_test.py
+                        Type or paste the following into your favorite code editor and save it inside the folder as midi_through_test.py
                     </p>
-                    <div class="code">
-                        import pygame.midi<br />
-                        <br />
-                        pygame.midi.init()<br />
-                        <br />
-                        device_id = 5<br />
-                        <br />
-                        global device_count<br />
-                        device_count = pygame.midi.get_count()<br />
-                        for i in range(device_count):<br />
-                            device_info = pygame.midi.get_device_info(i)<br />
-                            if device_info[2] == 1 and b"Midi Through" in device_info[1]:<br />
-                                device_id = i<br />
-                        <br />
-                        device = pygame.midi.Input(device_id)<br />
-                        <br />
-                        while True:<br />
-                            if device.poll():<br />
-                                print(device.read(1)[0])<br />
-                    </div>
+
+
+<pre class="code">
+import pygame.midi
+
+pygame.midi.init()
+
+device_id = None 
+
+global device_count
+device_count = pygame.midi.get_count()
+for i in range(device_count):
+    device_info = pygame.midi.get_device_info(i)
+    if device_info[2] == 1 and b"Midi Through" in device_info[1]:
+        device_id = i
+
+device = pygame.midi.Input(device_id)
+
+while True:
+    if device.poll():
+        print(device.read(1)[0])
+</pre>
+
+
+                </div>
+                <div class="section">
                     <h2>
                         Running the Script
                     </h2>
@@ -204,8 +239,10 @@
                         Launch the Python script as follow.
                     </p>
                     <div class="terminal">
-                        $ python3 midi-through-port-test.py
+                        $ python3 midi_through_test.py
                     </div>
+                </div>
+                <div class="section">
                     <h2>
                         Getting the MIDI Through Port
                     </h2>
@@ -218,15 +255,19 @@
                     <p>
                         Note the number after "client" on the line titled "Midi Through Port-0". This is the port you will play the MIDI file through.
                     </p>
+                </div>
+                <div class="section">
                     <h2>
                         Playing the MIDI File
                     </h2>
                     <p>
-                        Play the MIDI file using. Replace PORT_NUMBER with the number you got earlier from aconnect -l.
+                        Play the MIDI file using. Replace "14" with the port number you got earlier from aconnect -l.
                     </p>
                     <div class="terminal">
-                        $ aplaymidi --port PORT_NUMBER daisy-bell.midi
+                        $ aplaymidi --port 14 daisy-bell.mid
                     </div>
+                </div>
+                <div class="section">
                     <h2>
                         Expected Output
                     </h2>
@@ -240,7 +281,7 @@
                 <hr>
                 <div class="section">
                     <p>
-                        Do you have any questions or feedback? Just want to say "Hi"? <a href="https://discord.gg/PhrjZMcY">Join My Discord</a>!
+                        Do you have any questions or feedback, or just want to say "Hi"? Join my <a href="https://discord.gg/PhrjZMcY">Discord</a>!
                     </p>
                 </div>
 
