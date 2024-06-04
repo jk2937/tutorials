@@ -1,0 +1,17 @@
+Amend commit
+
+git add .
+git commit --amend
+git push --force
+
+To remove commits
+
+git log
+
+Note the commit hash you want to revert to
+
+git reset --hard COMMIT_HASH
+
+git add .
+git commit
+git push --force
