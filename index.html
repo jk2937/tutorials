@@ -90,6 +90,13 @@
             .terminal {
                 color: White;
                 background-color: Black;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: nowrap;
+            }
+            .terminal * {
+                font-size: 15px;
+                font-family: monospace;
             }
             .code {
                 border: 1px solid DarkGray;
@@ -134,8 +141,16 @@
                         Open a terminal and navigate to the desired parent directory and create a directory for the tutorial.
                     <div class="terminal">
                         <!-- Todo: Make this into a table -->
-                        $ mkdir midi-through-python<br />
-                        $ cd midi-through-python
+                        <div class="column-container-outer">
+                            <div>
+                                $&nbsp;<br />
+                                $<br />
+                            </div>
+                            <div>
+                                mkdir midi-through-python<br />
+                                cd midi-through-python
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="section">
@@ -154,7 +169,12 @@
                         Move the midi file to the folder from earlier.
                     </p>
                     <div class="terminal">
-                        $ mv -i ~/Downloads/daisy-bell.mid ./
+                            <div>
+                                $&nbsp; 
+                            </div>
+                            <div>
+                                mv -i ~/Downloads/daisy-bell.mid ./
+                            </div>
                     </div>
                 </div>
                 <div class="section">
@@ -165,11 +185,20 @@
                         Execute the following commands in the terminal to install necessary packages and set up the virtual environment.
                     </p>
                     <div class="terminal">
-                        $ sudo apt-get update  <span class="code-comment"># Update the system</span><br />
-                        $ sudo apt-get install python3 python3-venv python3-pip  <span class="code-comment"># Install required packages</span><br />
-                        $ python3 -m venv venv  <span class="code-comment"># Create a virtual environment</span><br />
-                        $ source venv/bin/activate  <span class="code-comment"># Activate the virtual environment</span><br />
-                        $ python3 -m pip install pygame  <span class="code-comment"># Install the pygame module</span>
+                        <div>
+                            $&nbsp;<br />
+                            $<br />
+                            $<br />
+                            $<br />
+                            $
+                        </div>
+                        <div>
+                            sudo apt-get update  <span class="code-comment"># Update the system</span><br />
+                            sudo apt-get install python3 python3-venv python3-pip  <span class="code-comment"># Install required packages</span><br />
+                            python3 -m venv venv  <span class="code-comment"># Create a virtual environment</span><br />
+                            source venv/bin/activate  <span class="code-comment"># Activate the virtual environment</span><br />
+                            python3 -m pip install pygame  <span class="code-comment"># Install the pygame module</span>
+                        </div>
                     </div>
                 </div>
                 <div class="section">
@@ -183,7 +212,12 @@
                         PyGame uses ALSA for midi. An update to ALSA seems to have moved some files. To allow PyGame to locate them, create a symbolic link in the old directory.
                     </p>
                     <div class="terminal">
-                        $ sudo ln -s /usr/share/alsa /usr/local/share/alsa
+                        <div>
+                            $&nbsp;
+                        </div>
+                        <div>
+                            sudo ln -s /usr/share/alsa /usr/local/share/alsa
+                        </div>
                     </div>
                 </div>
                 <div class="section">
@@ -226,7 +260,12 @@ while True:
                         Launch the Python script as follow.
                     </p>
                     <div class="terminal">
-                        $ python3 midi_through_test.py
+                        <div>
+                            $&nbsp;
+                        </div>
+                        <div>
+                            python3 midi_through_test.py
+                        </div>
                     </div>
                 </div>
                 <div class="section">
@@ -237,7 +276,12 @@ while True:
                         Open another terminal and run:
                     </p>
                     <div class="terminal">
-                        $ aconnect -l
+                        <div>
+                            $&nbsp;
+                        </div>
+                        <div>
+                            aconnect -l
+                        </div>
                     </div>
                     <p>
                         Note the number after "client" on the line titled "Midi Through Port-0". This is the port you will play the MIDI file through.
@@ -251,7 +295,12 @@ while True:
                         Play the MIDI file using the following. Replace "14" with the port number you got earlier from aconnect -l.
                     </p>
                     <div class="terminal">
-                        $ aplaymidi --port 14 daisy-bell.mid
+                        <div>
+                            $&nbsp;
+                        </div>
+                        <div>
+                        aplaymidi --port 14 daisy-bell.mid
+                        </div>
                     </div>
                 </div>
                 <div class="section">
