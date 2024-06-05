@@ -34,11 +34,9 @@
             }
             .flying-turtle {
                 height: 250px;
-                padding-top: 20px;
-                padding-left: 30px;
                 position: relative;
-                left: 600px;
-                top: -25px;
+                left: 40px;
+                top: 0px;
             }
             .content-container-outer {
                 display: flex;
@@ -77,17 +75,20 @@
             .content-container-header {
                 background-color: Gray;
                 color: White;
+                height: 215px;
             }
-            .content-container-header * {
+            .header-titles {
                 padding-left: 100px;
                 margin: 0px;
             }
-            .content-container-header h1 {
+            .content-container-header-h1 {
+                margin: 0px;
                 font-size: 60px;
                 padding-top: 50px;
                 padding-bottom: 0px;
             }
-            .content-container-header h2 {
+            .content-container-header-h2 {
+                margin: 0px;
                 font-size: 40px;
                 padding-top: 0px;
                 padding-bottom: 50px;
@@ -122,11 +123,17 @@
     <body>
         <div class="content-container-outer">
             <div class="content-container-header">
-                <div class="logo-outer">
-                    <img src="flying-turtle.png" class="flying-turtle"/>
+                <div class="column-container-outer">
+                    <div class="header-titles">
+                        <h1 class="content-container-header-h1">Jonny's Tutorials</h1>
+                        <h2 class="content-container-header-h2">Linux, Python, and so much more!</h2>
+                    </div>
+                    <div>
+                        <div class="logo-outer">
+                            <img src="flying-turtle.png" class="flying-turtle"/>
+                        </div>
+                    </div>
                 </div>
-                <h1>Jonny's Tutorials</h1>
-                <h2>Linux, Python, and so much more!</h2>
             </div>
         </div>
         <div class="content-container-outer">
@@ -136,6 +143,9 @@
                     <h1>
                         Reading from the Midi Through Port in Python
                     </h1>
+                    <p>
+                        (Last Updated: June 5, 2024)
+                    </p>
                     <p>
                         Hello and welcome to Jonny's Tutorials! Today, we will explore how to read MIDI data from the MIDI through port in Python using pygame. By the end of this tutorial, you will be able to interface a MIDI player with Python using the through port to capture and display incoming MIDI messages in real-time. This configuration can be used to synchronize audio with lights or motor movements on a Raspberry Pi, for example. Whether you are a musician looking to integrate MIDI into your Python projects, or just curious about working with MIDI data in Python, this tutorial is designed to help you achieve your goals.
                     </p>
@@ -297,7 +307,7 @@ while True:
                         </div>
                     </div>
                     <p>
-                        Note the number after "client" on the line titled "Midi Through Port-0". This is the port you will play the MIDI file through.
+                        Note the number after "client" on the line titled "Midi Through". This is the port you will play the MIDI file through.
                     </p>
                 </div>
                 <div class="section">
