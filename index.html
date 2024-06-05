@@ -80,7 +80,7 @@
                 padding-top: 0px;
                 padding-bottom: 50px;
             }
-            .terminal, .code {
+            .terminal, .code, .code-comment {
                 font-family: monospace;
                 position: relative;
                 font-size: 15px;
@@ -94,6 +94,9 @@
             .code {
                 border: 1px solid DarkGray;
                 background-color: White;
+            }
+            .code-comment {
+                color: DarkGray;
             }
         </style> 
     </head>
@@ -120,8 +123,20 @@
                         Prerequisites
                     </h2>
                     <p>
-                        For this tutorial, I recommend using Debian 12 Bookworm or a compatible version.  
+                        For this tutorial, I recommend using Debian 12 Bookworm or a compatible version. (Note: WSL has been tested and does not work) 
                     </p>
+                </div>
+                <div class="section"> 
+                    <h2>
+                        Create a folder for this tutorial
+                    </h2>
+                    <p>
+                        Open a terminal and navigate to the desired parent directory and create a directory for the tutorial.
+                    <div class="terminal">
+                        <!-- Todo: Make this into a table -->
+                        $ mkdir midi-through-python<br />
+                        $ cd midi-through-python
+                    </div>
                 </div>
                 <div class="section">
                     <h2>MIDI File</h2>
@@ -135,54 +150,26 @@
                     </center>
                 </div>
                 <div class="section">
-                    <h2>
-                        Installation and Setup
-                    </h2>
                     <p>
-                        Open a terminal and execute the following commands to install necessary packages and set up the virtual environment.
-                    </p>
-                    <p>
-                        Update the system
-                    </p>
-                    <div class="terminal">
-                        $ sudo apt-get update
-                    </div>
-                    <p>
-                        Install required packages
-                    </p>
-                    <div class="terminal">
-                        $ sudo apt-get install python3 python3-venv python3-pip
-                    </div>
-                    <p>
-                        Create a folder for the code
-                    </p>
-                    <div class="terminal">
-                        $ mkdir midi-through-python<br />
-                        $ cd midi-through-python
-                    </div>
-                    <p>
-                        Move the midi file you downloaded earlier into the folder.
+                        Move the midi file to the folder from earlier.
                     </p>
                     <div class="terminal">
                         $ mv -i ~/Downloads/daisy-bell.mid ./
                     </div>
+                </div>
+                <div class="section">
+                    <h2>
+                        Installation and Setup
+                    </h2>
                     <p>
-                        Create a virtual environment
+                        Execute the following commands in the terminal to install necessary packages and set up the virtual environment.
                     </p>
                     <div class="terminal">
-                        $ python3 -m venv venv
-                    </div>
-                    <p>
-                        Activate the virtual environment
-                    </p>
-                    <div class="terminal">
-                        $ source venv/bin/activate
-                    </div>
-                    <p>
-                        Install PyGame library.
-                    </p>
-                    <div class="terminal">
-                        $ python3 -m pip install pygame
+                        $ sudo apt-get update  <span class="code-comment"># Update the system</span><br />
+                        $ sudo apt-get install python3 python3-venv python3-pip  <span class="code-comment"># Install required packages</span><br />
+                        $ python3 -m venv venv  <span class="code-comment"># Create a virtual environment</span><br />
+                        $ source venv/bin/activate  <span class="code-comment"># Activate the virtual environment</span><br />
+                        $ python3 -m pip install pygame  <span class="code-comment"># Install the pygame module</span>
                     </div>
                 </div>
                 <div class="section">
@@ -190,7 +177,7 @@
                         ALSA Workaround
                     </h2>
                     <p>
-                        (https://github.com/pygame/pygame/issues/3756)
+                        (<a href="https://github.com/pygame/pygame/issues/3756">https://github.com/pygame/pygame/issues/3756</a>)
                     </p>
                     <p>
                         PyGame uses ALSA for midi. An update to ALSA seems to have moved some files. To allow PyGame to locate them, create a symbolic link in the old directory.
@@ -201,7 +188,7 @@
                 </div>
                 <div class="section">
                     <h2>
-                        Creating the Script
+                        Write the Python Script
                     </h2>
                     <p>
                         Type or paste the following into your favorite code editor and save it inside the folder as midi_through_test.py
@@ -261,7 +248,7 @@ while True:
                         Playing the MIDI File
                     </h2>
                     <p>
-                        Play the MIDI file using. Replace "14" with the port number you got earlier from aconnect -l.
+                        Play the MIDI file using the following. Replace "14" with the port number you got earlier from aconnect -l.
                     </p>
                     <div class="terminal">
                         $ aplaymidi --port 14 daisy-bell.mid
@@ -284,11 +271,9 @@ while True:
                         Do you have any questions or feedback, or just want to say "Hi"? Join my <a href="https://discord.gg/PhrjZMcY">Discord</a>!
                     </p>
                 </div>
-
             </div>
             <div class="spacer"></div>
         </div>
-
     </body>
 </html>
 
