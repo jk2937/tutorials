@@ -51,7 +51,7 @@
                 padding-top: 50px;
             }
             .content-container p {
-                text-align: justify;
+                text-align: left;
                 font-size: 20px;
             }
             .content-container center {
@@ -122,7 +122,7 @@
                         Reading from the Midi Through Port in Python
                     </h1>
                     <p>
-                        Hello and welcome to Jonny's Tutorials! Today, we will explore how to read MIDI data from the MIDI through port in Python using PyGame. By the end of this tutorial, you will be able to interface a MIDI player with Python using the through port to capture and display incoming MIDI messages in real-time. This configuration can be used to synchronize audio with lights or motor movements on a Raspberry Pi, for example. Whether you are a musician looking to integrate MIDI into your Python projects, or just curious about working with MIDI data in Python, this tutorial is designed to help you achieve your goals.
+                        Hello and welcome to Jonny's Tutorials! Today, we will explore how to read MIDI data from the MIDI through port in Python using pygame. By the end of this tutorial, you will be able to interface a MIDI player with Python using the through port to capture and display incoming MIDI messages in real-time. This configuration can be used to synchronize audio with lights or motor movements on a Raspberry Pi, for example. Whether you are a musician looking to integrate MIDI into your Python projects, or just curious about working with MIDI data in Python, this tutorial is designed to help you achieve your goals.
                     </p>
                 </div>
                 <div class="section">
@@ -135,20 +135,19 @@
                 </div>
                 <div class="section"> 
                     <h2>
-                        Create a folder for this tutorial
+                        Create a Directory for This Tutorial
                     </h2>
                     <p>
                         Open a terminal and navigate to the desired parent directory and create a directory for the tutorial.
                     <div class="terminal">
-                        <!-- Todo: Make this into a table -->
                         <div class="column-container-outer">
                             <div>
                                 $&nbsp;<br />
                                 $<br />
                             </div>
                             <div>
-                                mkdir midi-through-python<br />
-                                cd midi-through-python
+                                mkdir midi-tutorial<br />
+                                cd midi-tutorial
                             </div>
                         </div>
                     </div>
@@ -166,7 +165,7 @@
                 </div>
                 <div class="section">
                     <p>
-                        Move the midi file to the folder from earlier.
+                        Move the midi file to the midi-tutorial/directory.
                     </p>
                     <div class="terminal">
                             <div>
@@ -209,7 +208,7 @@
                         (<a href="https://github.com/pygame/pygame/issues/3756">https://github.com/pygame/pygame/issues/3756</a>)
                     </p>
                     <p>
-                        PyGame uses ALSA for midi. An update to ALSA seems to have moved some files. To allow PyGame to locate them, create a symbolic link in the old directory.
+                        pygame uses ALSA for midi. An update to ALSA seems to have moved some files. To allow pygame to locate them, create a symbolic link in the old directory.
                     </p>
                     <div class="terminal">
                         <div>
@@ -225,7 +224,7 @@
                         Write the Python Script
                     </h2>
                     <p>
-                        Type or paste the following into your favorite code editor and save it inside the folder as midi_through_test.py
+                        Type or paste the following into your favorite code editor and save it as midi_through_test.py inside the midi-tutorial directory.
                     </p>
 
 
