@@ -1,0 +1,9 @@
+In this tutorial I will use the MusE DAW in Linux with the MIDI though port and Python to read from the MIDI through port in real time. MusE code was used as the basis of the popular MuseScore software. It is a fully featured MIDI editor that includes the ability to edit MIDI events, something many pieces of proprietary software can't do. This makes it an excellent choice for a MIDI editor on Linux. Note that although MusE has it's own Python interface, I am using the MIDI through port to support compatibility with other software such as aplaymidi.
+
+launch jack with qjackctl and press start. Reboot the PC if it fails to launch. If it continues to fail, adjust the settings by clicking Setup. You may needd to adjust the interface, sample rate, frames/period, and periods/buffer settings until you can get jack to launch. Sometimes jack fails to launch once and then launcches successfully without any change. Here is a screenshot of the settings I use. 
+
+Make sure MIDI Driver is set to seq.
+
+Turn the volume all the way up before you launch jack. You will not be able to adjust the volume using the volume slider once jack has launched, and it will be stuck at whatever volume it started off with. The volume slider may move once jack is launched, but moving it will not have any effect. 
+
+First, let's play a midi file using jack, MusE, and Qsynth.
