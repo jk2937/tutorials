@@ -9,6 +9,26 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <style>
+            :root {
+                --color1: #e0e0e0;
+                --color2: #2682a6;
+                --color3: #f7cac9;
+                --color4: #f7786b;
+            }
+            a:link {
+              color: #1489B8; 
+            }
+
+            a:visited {
+              color: MediumOrchid; 
+            }
+
+            a:hover {
+            }
+
+            a:active {
+              color: FireBrick;
+            }
             html {
                 -moz-text-size-adjust: none;
                 -webkit-text-size-adjust: none;
@@ -19,7 +39,7 @@
             }
             .spacer {
                 width: 200px;
-                background-color: LightGray;
+                background-color: var(--color1);
             }
             
             .column-container-outer * {
@@ -91,7 +111,7 @@
                 }
             }
             .content-container {
-                background-color: LightGray;
+                background-color: var(--color1);
             }
             .content-container p, .content-container center, .content-container h1, .content-container h2 {
                 margin: 0px;
@@ -115,7 +135,7 @@
                 padding-top: 0px;
             }
             .content-container-header {
-                background-color: Gray;
+                background-color: var(--color2);
                 color: White;
             }
 
@@ -154,12 +174,20 @@
                 font-family: monospace;
             }
             .code {
-                border: 1px solid DarkGray;
+                border: 1px solid var(--color2);
                 background-color: White;
                 overflow: scroll;
             }
             .code-comment {
-                color: DarkGray;
+                color: var(--color2);
+            }
+            .terminal-list {
+                list-style-type: "$";
+                margin: 0px;
+                padding: 0px 0px 0px 10px;
+            }
+            .terminal-list li {
+                padding-left: 10px;
             }
         </style> 
     </head>
@@ -187,7 +215,7 @@
                         Reading from the Midi Through Port in Python
                     </h1>
                     <p>
-                        (Last Updated: June 5, 2024)
+                        (Last Updated: June 6, 2024)
                     </p>
                     <p>
                         Hello and welcome to Jonny's Tutorials! Today, we will explore how to read MIDI data from the MIDI through port in Python using pygame. By the end of this tutorial, you will be able to interface a MIDI player with Python using the through port to capture and display incoming MIDI messages in real-time. This configuration can be used to synchronize audio with lights or motor movements on a Raspberry Pi, for example. Whether you are a musician looking to integrate MIDI into your Python projects, or just curious about working with MIDI data in Python, this tutorial is designed to help you achieve your goals.
@@ -210,12 +238,14 @@
                     </p>
                     <div class="terminal">
                         <div>
-                            $&nbsp;<br />
-                            $<br />
-                        </div>
-                        <div>
-                            mkdir midi-tutorial<br />
-                            cd midi-tutorial
+                            <ul class="terminal-list">
+                                <li>
+                                    mkdir midi-tutorial
+                                </li>
+                                <li>
+                                    cd midi-tutorial
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -236,10 +266,11 @@
                     </p>
                     <div class="terminal">
                         <div>
-                            $&nbsp; 
-                        </div>
-                        <div>
-                            mv -i ~/Downloads/daisy-bell.mid ./
+                            <ul class="terminal-list">
+                                <li>
+                                    mv -i ~/Downloads/daisy-bell.mid ./
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -252,18 +283,22 @@
                     </p>
                     <div class="terminal">
                         <div>
-                            $&nbsp;<br />
-                            $<br />
-                            $<br />
-                            $<br />
-                            $
-                        </div>
-                        <div>
-                            sudo apt-get update  <span class="code-comment"># Update the system</span><br />
-                            sudo apt-get install python3 python3-venv python3-pip  <span class="code-comment"># Install required packages</span><br />
-                            python3 -m venv venv  <span class="code-comment"># Create a virtual environment</span><br />
-                            source venv/bin/activate  <span class="code-comment"># Activate the virtual environment</span><br />
-                            python3 -m pip install pygame  <span class="code-comment"># Install the pygame module</span>
+                            <ul class="terminal-list"> 
+                                <li>
+                                    sudo apt-get update  <span class="code-comment"># Update the system</span>
+                                </li>
+                                <li>
+                                    sudo apt-get install python3 python3-venv python3-pip  <span class="code-comment"># Install required packages</span>
+                                </li>
+                                <li>
+                                    python3 -m venv venv  <span class="code-comment"># Create a virtual environment</span>
+                                </li>
+                                <li>
+                                    source venv/bin/activate  <span class="code-comment"># Activate the virtual environment</span>
+                                </li>
+                                <li>
+                                    python3 -m pip install pygame  <span class="code-comment"># Install the pygame module</span>
+                                </li>
                         </div>
                     </div>
                 </div>
@@ -279,10 +314,11 @@
                     </p>
                     <div class="terminal">
                         <div>
-                            $&nbsp;
-                        </div>
-                        <div>
-                            sudo ln -s /usr/share/alsa /usr/local/share/alsa
+                            <ul class="terminal-list">
+                                <li>
+                                    sudo ln -s /usr/share/alsa /usr/local/share/alsa
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -327,10 +363,11 @@ while True:
                     </p>
                     <div class="terminal">
                         <div>
-                            $&nbsp;
-                        </div>
-                        <div>
-                            python3 midi_through_test.py
+                            <ul class="terminal-list">
+                                <li>
+                                    python3 midi_through_test.py
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -343,10 +380,11 @@ while True:
                     </p>
                     <div class="terminal">
                         <div>
-                            $&nbsp;
-                        </div>
-                        <div>
-                            aconnect -l
+                            <ul class="terminal-list">
+                                <li>
+                                    aconnect -l
+                                </li>
+                            </ul>
                         </div>
                     </div>
                     <p>
@@ -362,10 +400,11 @@ while True:
                     </p>
                     <div class="terminal">
                         <div>
-                            $&nbsp;
-                        </div>
-                        <div>
-                        aplaymidi --port 14 daisy-bell.mid
+                            <ul class="terminal-list">
+                                <li>
+                                    aplaymidi --port 14 daisy-bell.mid
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </div>
