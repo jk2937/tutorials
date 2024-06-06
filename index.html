@@ -21,22 +21,13 @@
                 width: 200px;
                 background-color: LightGray;
             }
-            .column-container-outer {
-                display: flex;
-                flex-direction: row;
-                flex-wrap: nowrap;
-            }
+            
             .column-container-outer * {
             }
             .logo-outer {
-                width: 0px;
-                height: 0px;
             }
             .flying-turtle {
                 height: 250px;
-                position: relative;
-                left: 40px;
-                top: 0px;
             }
             .content-container-outer {
                 display: flex;
@@ -45,8 +36,59 @@
                 justify-content: center;
                 margin: auto;
             }
-            .content-container-outer, .content-container, .content-container-header {
-                width: 1250px;
+            @media (min-width: 1251px) {
+                .content-container-outer, .content-container, .content-container-header {
+                    width: 1250px;
+                }
+                 .content-container-header {
+                    height: 215px;
+                }
+               
+            }
+            @media (max-width: 1250px) {
+                .content-container-outer, .content-container, .content-container-header {
+                    width: 100%;
+                }
+            }
+            @media (min-width: 950px) {
+                .flying-turtle {
+                    position: relative;
+                    left: 40px;
+                    top: 0px;
+                }
+
+            }
+            @media (min-width: 760px) {
+                .header-titles {
+                    padding-left: 100px;
+                    margin: 0px;
+                }
+            }
+            @media (max-width: 759px) {
+                .header-titles {
+                    padding-left: 20px;
+                    margin: 0px;
+                }
+            }
+            @media (min-width: 520px) {
+                .column-container-outer {
+                    display: flex;
+                    flex-direction: row;
+                    flex-wrap: nowrap;
+                }
+            }
+            @media (max-width: 520px) {
+                .logo-outer {
+                    width: 100%;
+                    margin: auto;
+                    display: flex;
+                    justify-content: center;
+                }
+                .flying-turtle {
+                    height: 200px;
+                    width: auto;
+                    margin: auto 0px;
+                }
             }
             .content-container {
                 background-color: LightGray;
@@ -75,12 +117,8 @@
             .content-container-header {
                 background-color: Gray;
                 color: White;
-                height: 215px;
             }
-            .header-titles {
-                padding-left: 100px;
-                margin: 0px;
-            }
+
             .content-container-header-h1 {
                 margin: 0px;
                 font-size: 60px;
@@ -91,7 +129,11 @@
                 margin: 0px;
                 font-size: 40px;
                 padding-top: 0px;
-                padding-bottom: 50px;
+            }
+            @media (min-width: 520px) {
+                .content-container-header-h2 {
+                    padding-bottom: 50px;
+                }
             }
             .terminal, .code, .code-comment {
                 font-family: monospace;
@@ -114,6 +156,7 @@
             .code {
                 border: 1px solid DarkGray;
                 background-color: White;
+                overflow: scroll;
             }
             .code-comment {
                 color: DarkGray;
