@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>How to Read MIDI Data From a MIDI Through Port in Python | Jonny's Tutorials</title>
+        <title></title>
         <meta name="description" content="Learn how to interface a MIDI player with Python using the through port to capture and display incoming MIDI messages in real-time.">
         <meta name="keywords" content="pygame, midi, python, through port, integration, music, project, sync, motor movement, light, LED, automation, control">
         <meta name="author" content="Jonny">
@@ -291,210 +291,124 @@
             <div class="content-container">
                 <div class="section">
                     <h1>
-                        Reading from the Midi Through Port in Python
+                        MIDI Through Port Part Two
                     </h1>
                     <p>
-                        (Last Updated: June 6, 2024)
+                        Welcome to Jonny's Tutorials! In this tutorial, you will learn how to capture MIDI events from a digital audio workstation (DAW) in real-time using the MusE DAW in Linux, the MIDI Through Port, and Python. While MusE has its own Python interface, this tutorial utilizes the MIDI Through Port to ensure compatibility with other software such as aplaymidi.
                     </p>
                     <p>
-                        Hello and welcome to Jonny's Tutorials! Today, we will explore how to read MIDI data from the MIDI through port in Python using pygame. By the end of this tutorial, you will be able to interface a MIDI player with Python using the through port to capture and display incoming MIDI messages in real-time. This configuration can be used to synchronize audio with lights or motor movements on a Raspberry Pi, for example. Whether you are a musician looking to integrate MIDI into your Python projects, or just curious about working with MIDI data in Python, this tutorial is designed to help you achieve your goals.
+                        This tutorial assumes you've gone through Tutorial Part One, which focuses on creating a basic MIDI Through Port reader using Python in Linux. 
                     </p>
                 </div>
                 <div class="section">
                     <h2>
-                        Prerequisites
+                        Install packages
                     </h2>
                     <p>
-                        For this tutorial, I recommend using Debian 12 Bookworm or a compatible version. (Note: WSL has been tested and does not work) <!-- Todo: Why? Use Python to show. --> 
-                    </p>
-                </div>
-                <div class="section"> 
-                    <h2>
-                        Create a Directory
-                    </h2>
-                    <p>
-                        Open a terminal and navigate to the desired parent directory and create a directory for the tutorial.
+                        To get started, install the required packages using the following command in your terminal:
                     </p>
                     <div class="terminal">
-                        <div>
-                            <ul class="terminal-list">
-                                <li>
-                                    mkdir midi-tutorial
-                                </li>
-                                <li>
-                                    cd midi-tutorial
-                                </li>
-                            </ul>
-                        </div>
+                        <ul class="terminal-list">
+                            <li>
+                                sudo apt-get install qjackctl muse qsynth
+                            </li>
+                        </ul>
                     </div>
-                </div>
-                <div class="section">
-                    <h2>MIDI File</h2>
                     <p>
-                        Click here to download the daisy-bell.midi file for testing, accessible under the public domain (CC0).
+                        For this tutorial, it doesn't matter if you agree to enable real-time priority when asked. I chose to accept it during my setup.
                     </p>
-                    <center>
-                        <a href="daisy-bell.mid">
-                            daisy-bell.mid
-                        </a>
-                    </center>
-                    <p>
-                        Move the midi file to the midi-tutorial/directory.
-                    </p>
-                    <div class="terminal">
-                        <div>
-                            <ul class="terminal-list">
-                                <li>
-                                    mv -i ~/Downloads/daisy-bell.mid ./
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
+                    <!-- Todo: test no realtime priority -->
                 </div>
                 <div class="section">
                     <h2>
-                        Installation and Setup
+                        Launch Jack
                     </h2>
                     <p>
-                        Execute the following commands in the terminal to install necessary packages and set up the virtual environment.
+                        Now we will start jack using qjackctl. Be aware that changing the master volume control after starting Jack has no effect on playback levels. Make certain to increase the volume beforehand.
                     </p>
-                    <div class="terminal">
-                        <div>
-                            <ul class="terminal-list"> 
-                                <li>
-                                    sudo apt-get update  <span class="code-comment"># Update the system</span>
-                                </li>
-                                <li>
-                                    sudo apt-get install python3 python3-venv python3-pip  <span class="code-comment"># Install required packages</span>
-                                </li>
-                                <li>
-                                    python3 -m venv venv  <span class="code-comment"># Create a virtual environment</span>
-                                </li>
-                                <li>
-                                    source venv/bin/activate  <span class="code-comment"># Activate the virtual environment</span>
-                                </li>
-                                <li>
-                                    python3 -m pip install pygame  <span class="code-comment"># Install the pygame module</span>
-                                </li>
-                        </div>
-                    </div>
+                    <p>
+                        Double-check that the MIDI Driver in qjackctl's Setup menu is configured as 'seq.'
+                    </p>
+                    <p>
+                        Press 'Start' to launch Jack. If jack fails to launch on the first attempt, try again. At times, Jack launches successfully on the second attempt despite identical settings.
+                    </p>
+                    <p>
+                        If you have issues, adjust the Interface, Sample Rate, Frames/Period, and Periods/Buffer parameters in 'Setup'. Rebooting your PC and try again if problems persist.
+                    </p>
                 </div>
                 <div class="section">
                     <h2>
-                        ALSA Workaround
+                        Launch MusE
                     </h2>
                     <p>
-                        (<a href="https://github.com/pygame/pygame/issues/3756">https://github.com/pygame/pygame/issues/3756</a>)
+                        Now, launch MusE. You may be prompted to send Instrument Initialization Sequences; for the purposes of this tutorial, it does not matter whether you select 'Yes' or 'No,'. I recommend clicking 'Yes'.
+                    </p>
+                </div>
+                <div class="section">
+                    <h2>
+                        Launch Qsynth
+                    </h2>
+                    <p>
+                        Now, let's move on to setting up Qsynth. To begin, open Qsynth and click on 'Setup' followed by 'Soundfonts.' From there, you can load a SoundFont bank by clicking 'Open' and browsing through your collection. You should see options available from the default SF2 folder. After selecting the soundfont click yes to restart the audio engine.
                     </p>
                     <p>
-                        pygame uses ALSA for midi. An update to ALSA seems to have moved some files. To allow pygame to locate them, create a symbolic link in the old directory.
+                        Note that you only need to complete this process once. 
+                    </p>
+                </div>
+                <div class="section">
+                    <h2>
+                        Import the example MIDI file into MusE
+                    </h2>
+                    <p>
+                        Next, we're going to import the example MIDI file. First, locate the daisy-bell.mid file you downloaded from the previous tutorial. Then, drag and drop it onto the Part Canvas within MusE. Finally, click 'Add To Project.'
+                    </p>
+                </div>
+                <div class="section">
+                    <h2>
+                        Launch the Python script:
+                    </h2>
+                    <p>
+                        It's time to run our Python script. Open a terminal window and navigate to the midi-tutorial directory using the command line. Enter the following commands:
                     </p>
                     <div class="terminal">
-                        <div>
-                            <ul class="terminal-list">
-                                <li>
-                                    sudo ln -s /usr/share/alsa /usr/local/share/alsa
-                                </li>
-                            </ul>
-                        </div>
+                        <ul class="terminal-list">
+                            <li>
+                                cd midi-tutorial/
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- todo: change to ~/midi-tutorial -->
+                    <p>
+                        Then activate the virtual environment and execute the script:
+                    </p>
+                    <div class="terminal">
+                        <ul class="terminal-list">
+                            <li>
+                                source venv/bin/activate
+                            </li>
+                            <li>
+                                python3 midi_through_port_test.py
+                            </li>
+                        </ul>
                     </div>
                 </div>
                 <div class="section">
                     <h2>
-                        Write the Python Script
+                        Begin playback within MusE:
                     </h2>
                     <p>
-                        Type or paste the following into your favorite code editor and save it as midi_through_test.py inside the midi-tutorial directory.
-                    </p>
-
-
-<pre class="code">
-import pygame.midi
-
-pygame.midi.init()
-
-device_id = None 
-
-global device_count
-device_count = pygame.midi.get_count()
-for i in range(device_count):
-    device_info = pygame.midi.get_device_info(i)
-    if device_info[2] == 1 and b"Midi Through" in device_info[1]:
-        device_id = i
-
-device = pygame.midi.Input(device_id)
-
-while True:
-    if device.poll():
-        print(device.read(1)[0])
-</pre>
-
-
-                </div>
-                <div class="section">
-                    <h2>
-                        Running the Script
-                    </h2>
-                    <p>
-                        Launch the Python script as follow.
-                    </p>
-                    <div class="terminal">
-                        <div>
-                            <ul class="terminal-list">
-                                <li>
-                                    python3 midi_through_test.py
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="section">
-                    <h2>
-                        Getting the MIDI Through Port
-                    </h2>
-                    <p>
-                        With Python still running, open another terminal and run:
-                    </p>
-                    <div class="terminal">
-                        <div>
-                            <ul class="terminal-list">
-                                <li>
-                                    aconnect -l
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <p>
-                        Note the number after "client" on the line titled "Midi Through". This is the port you will play the MIDI file through.
-                    </p>
-                </div>
-                <div class="section">
-                    <h2>
-                        Playing the MIDI File
-                    </h2>
-                    <p>
-                        Play the MIDI file using the following. Replace "14" with the port number you got from aconnect -l.
-                    </p>
-                    <div class="terminal">
-                        <div>
-                            <ul class="terminal-list">
-                                <li>
-                                    aplaymidi --port 14 daisy-bell.mid
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="section">
-                    <h2>
-                        Expected Output
-                    </h2>
-                    <p>
-                        As you play the MIDI file, the Python script should display incoming MIDI events in the terminal (although you won't be able to hear anything). Congratulations! You have successfully captured MIDI data using Python. Now you can continue experimenting with different MIDI files and settings to further enhance your skills.
+                        Click the Play button located near the top left corner of the MusE interface to initiate playback.
                     </p>
                     <p>
-                        Happy Coding!
+                        Real-time MIDI messages will now print in the console alongside timestamps.
                     </p>
+                    <p>
+                        Congratulations! By following this tutorial, you have successfully captured MIDI events from a DAW using Python and the MIDI Through Port. Feel free to explore further possibilities with MIDI and Python. 
+                    </p>
+                    <p>
+                        To finish up, close qsynth, and MusE, stop jack using qjackctl, then close qjackctl.
+                    </p>
+                    <!-- Todo: Check headings, colon, capitalization of technology names -->
                 </div>
             </div>
             <div class="spacer"></div>
@@ -512,4 +426,3 @@ while True:
         </div>
     </body>
 </html>
-
