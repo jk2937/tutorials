@@ -70,12 +70,12 @@
                 .content-container-outer, .content-container, .content-container-header {
                     width: 100%;
                 }
-                .section, .footer .content-container {
+                .section, .footer-p {
                     padding-left: 10px;
                     padding-right: 10px;
                 }
-                .spacer {
-                    width: 150px;
+                .spacer, .footer-spacer {
+                    width: 50px;
                 }
                 body, html {
                     margin: 0px;
@@ -206,9 +206,7 @@
             .terminal-list li {
                 padding-left: 10px;
             }
-            .footer {
-                background-color: Black;
-                color: White;
+            .content-container-outer, .footer {
                 text-align: left;
                 padding: 0px;
                 margin-top: 0px;
@@ -220,7 +218,7 @@
 
             }
             @media (min-width: 1300px) {
-                .footer {
+                .content-container-outer, .footer {
                     width: 1250px;
                     margin: auto;
                 }
@@ -229,18 +227,18 @@
                 background-color: #092834;
             }
             @media (min-width: 560px) {
-                .footer-p {
+                .footer-p, .section p {
                     min-width: 560px;
                 }
-                .footer-spacer {
-                    width: 200px;
+                .spacer, .footer-spacer {
+                    width: 190px;
                 }
             }
             @media (max-width: 560px) {
-                .footer-p {
+                .footer-p, .section p {
                     min-width: 100%
                 }
-                .footer-spacer {
+                .spacer, .footer-spacer {
                     width: 0px;
                 }
             }
@@ -248,13 +246,21 @@
                 margin: 0px;
                 padding: 0px;
             }
-            .footer-p {
-                padding: 20px 0px;
-                font-size: 13px;
+            .footer-p, .section p {
+                padding-top: 20px;
+                padding-bottom: 20px;
+                font-size: 15px;
             }
             .footer .content-container {
                 background-color: #092834;
                 color: #e0e0e0;
+            }
+            .gray .content-container {
+                background-color: var(--color1);
+                color: Black;
+            }
+            .footer-text {
+                font-size: 13px;
             }
         </style> 
     </head>
@@ -274,7 +280,7 @@
                 </div>
             </div>
         </div>
-        <div class="content-container-outer">
+        <div class="footer gray">
             <div class="spacer"></div>
             <div class="content-container">
                 <div class="section">
@@ -492,9 +498,11 @@ while True:
         <div class="footer">
             <div class="footer-spacer"></div>
             <div class="content-container">
-                <p class="footer-p">
-                    Do you have any questions or feedback, or just want to say "Hi"? Join my <a href="https://discord.gg/PhrjZMcY">Discord</a>!
-                </p>
+                <div class="footer-p">
+                    <p class="footer-text">
+                        Do you have any questions or feedback, or just want to say "Hi"? Join my <a href="https://discord.gg/PhrjZMcY">Discord</a>!
+                    </p>
+                </div>
             </div>
             <div class="footer-spacer"></div>
         </div>
