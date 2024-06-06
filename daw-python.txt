@@ -1,46 +1,41 @@
-Hello and welcome to Jonny's Tutorials! In this tutorial, you will learn how to capture MIDI events from a DAW (Digital Audio Workstation) in real-time using the MusE DAW in Linux, the MIDI Through Port, and Python. MusE shares its coding base with the popular MuseScore software and offers advanced MIDI editing capabilities, making it an ideal choice for working with MIDI data in Linux. Although MusE comes with its own Python interface, this tutorial uses the MIDI Through Port to maintain compatibility with other software like aplaymidi.
+MIDI Through Port Part Two
 
-This tutorial serves as Part Two of learning how to read the MIDI Through Port using Python in Linux. To maximize understanding, kindly complete Tutorial One prior to continuing with this guide. Throughout this second installment, we build upon foundational knowledge presented earlier, focusing on interfacing with a Digital Audio Workstation (DAW), namely MusE.
+Welcome to Jonny's Tutorials! In this tutorial, you will learn how to capture MIDI events from a digital audio workstation (DAW) in real-time using the MusE DAW in Linux, the MIDI Through Port, and Python. While MusE has its own Python interface, this tutorial utilizes the MIDI Through Port to ensure compatibility with other software such as aplaymidi.
 
-Before getting started, follow these steps to configure Jack and set up your environment:
+This tutorial assumes you've gone through Tutorial Part One, which focuses on creating a basic MIDI Through Port reader using Python in Linux. 
+
+To get started, install the required packages using the following command in your terminal:
 
 Install packages
 
 $  sudo apt-get install qjackctl muse qsynth
 
-Accept realtime priority in jack
+For this tutorial, it doesn't matter if you agree to enable real-time priority when asked. I chose to accept it during my setup.
 
 Todo: test no realtime priority
 
-Start Jack using qjackctl:
-Keep in mind that modifying the master volume control on your computer while Jack is running does not affect the playback levels. Turn up the volume before starting Jack.
+Now we will start jack using qjackctl. Be aware that changing the master volume control after starting Jack has no effect on playback levels. Make certain to increase the volume beforehand.
+Double-check that the MIDI Driver in qjackctl's Setup menu is configured as 'seq.'
+Press 'Start' to launch Jack. If jack fails to launch on the first attempt, try again. At times, Jack launches successfully on the second attempt despite identical settings.
+If you have issues, adjust the Interface, Sample Rate, Frames/Period, and Periods/Buffer parameters in 'Setup'. Rebooting your PC and try again if problems persist.
 
-Launch qjackctl. Ensure that the MIDI Driver setting in Setup is set to 'seq'.
-Launch jack by clicking 'Start'. If Jack fails to launch initially, try again. Sometimes jack will fail to launch the first time and suceed the second time without any change. If that doesn't work, adjust the settings under 'Setup', specifically the Interface, Sample Rate, Frames/Period, and Periods/Buffer options, until Jack runs smoothly. Finally, try rebooting your PC if you continue having issues with Jack.
-Now, proceed with launching MusE and Qsynth:
+Now, launch MusE. You may be prompted to send Instrument Initialization Sequences; for the purposes of this tutorial, it does not matter whether you select 'Yes' or 'No,'. I recommend clicking 'Yes'.
 
-Launch MusE.
-You may be asked to send Instrument Initialization Sequences. It doesn't matter for this tutorial, but I recommend you choose Yes here.
+Now, let's move on to setting up Qsynth. To begin, open Qsynth and click on 'Setup' followed by 'Soundfonts.' From there, you can load a SoundFont bank by clicking 'Open' and browsing through your collection. You should see options available from the default SF2 folder. After selecting the soundfont click yes to restart the audio engine.
+Note that you only need to complete this process once. 
 
-Launch Qsynth.
-Within Qsynth, click Setup, then Soundfonts. load a SoundFont bank by clicking Open and choosing a soundfont from your collection. It should show you options from the default sf2 folder. You will only need to do this the first time you run qsynth. Additional soundfonts may be aquired by downloading additional packages. (Todo: make a page on this and where each one downloads the sf2 files). 
+Import the example MIDI file
 
-Click yes to restart the audio engine.
-
-Import the example MIDI file:
-Drag and drop the daisy-bell.mid file you downloaded from the previous tutorial onto the Part Canvas within MusE. Click Add To Project.
+Next, we're going to import the example MIDI file. First, locate the daisy-bell.mid file you downloaded from the previous tutorial. Then, drag and drop it onto the Part Canvas within MusE. Finally, click 'Add To Project.'
 
 Run the Python script:
-Open a terminal.
 
-Move to the midi-tutorial folder from the previous tutorial
+It's time to run our Python script. Open a terminal window and navigate to the midi-tutorial directory using the command line. Enter the following commands:
 
-$ cd midi-tutorial/
+cd midi-tutorial/
+todo: change to ~/midi-tutorial
 
-Todo: Change this to ~/midi-tutorial/
-
-Execute the script by entering 
-
+Then activate the virtual environment and execute the script:
 
 source venv/bin/activate
 python3 midi_through_port_test.py
@@ -48,13 +43,10 @@ python3 midi_through_port_test.py
 
 Begin playback within MusE:
 
-Click the Play button to initiate playback
-
-
+Click the Play button located near the top left corner of the MusE interface to initiate playback.
 
 Real-time MIDI messages will now print in the console alongside timestamps.
 Congratulations! By following this tutorial, you have successfully captured MIDI events from a DAW using Python and the MIDI Through Port. Feel free to explore further possibilities with MIDI and Python. 
 
 To finish up, close qsynth, and MusE, stop jack using qjackctl, then close qjackctl.
 
-Happy exploring!
