@@ -1,9 +1,37 @@
-In this tutorial I will use the MusE DAW in Linux with the MIDI though port and Python to read from the MIDI through port in real time. MusE code was used as the basis of the popular MuseScore software. It is a fully featured MIDI editor that includes the ability to edit MIDI events, something many pieces of proprietary software can't do. This makes it an excellent choice for a MIDI editor on Linux. Note that although MusE has it's own Python interface, I am using the MIDI through port to support compatibility with other software such as aplaymidi.
+Hello and welcome to Jonny's Tutorials! In this tutorial, you will learn how to capture MIDI events from a DAW (Digital Audio Workstation) in real-time using the MusE DAW in Linux, the MIDI Through Port, and Python. MusE shares its coding base with the popular MuseScore software and offers advanced MIDI editing capabilities, making it an ideal choice for working with MIDI data in Linux. Although MusE comes with its own Python interface, this tutorial uses the MIDI Through Port to maintain compatibility with other software like aplaymidi.
 
-launch jack with qjackctl and press start. Reboot the PC if it fails to launch. If it continues to fail, adjust the settings by clicking Setup. You may needd to adjust the interface, sample rate, frames/period, and periods/buffer settings until you can get jack to launch. Sometimes jack fails to launch once and then launcches successfully without any change. Here is a screenshot of the settings I use. 
+Before getting started, follow these steps to configure Jack and set up your environment:
 
-Make sure MIDI Driver is set to seq.
+Start Jack using qjackctl:
+Launch qjackctl and click 'Start'. If Jack fails to launch initially, reboot your PC and try again. Adjust the settings under 'Setup', specifically the Interface, Sample Rate, Frames/Period, and Periods/Buffer options, until Jack runs smoothly.
+Ensure that the MIDI Driver setting is set to 'seq'.
+Configure audio and MIDI devices:
+Set up your audio device(s) within qjackctl by selecting the desired driver, input channels, output channels, and buffer size.
+Check the box next to 'Capture MIDI ports' and verify that both the ALSA sequencer client and the corresponding MIDI inputs appear in the list below.
+Prepare your system for optimal performance:
+Turn up the master volume control on your computer before starting Jack. Keep in mind that the volume cannot be adjusted during runtime; therefore, returning the level back to normal requires restarting Jack. However, modifying the volume while Jack is running does not affect the playback levels.
+Close unnecessary applications to conserve resources and minimize potential latency issues.
+Now, proceed with launching MusE and Qsynth:
 
-Turn the volume all the way up before you launch jack. You will not be able to adjust the volume using the volume slider once jack has launched, and it will be stuck at whatever volume it started off with. The volume slider may move once jack is launched, but moving it will not have any effect. 
+Open MusE:
+Upon launching MusE, check the Transport Panel located at the bottom left corner of the screen. Confirm that the tempo value is set to 120 BPM, ensuring synchronized timing throughout the tutorial.
+Initialize Qsynth:
+Within Qsynth, load a SoundFont bank by clicking the folder icon and choosing one from your collection. Alternatively, download free SoundFont banks online from sources like HammerSound (<https://www.hammersound.net/>).
+Select the loaded SoundFont by clicking on the first button beneath the FluidR3 GM label. A pop-up menu containing various instrument categories will appear. Choose a category, followed by the preferred instrument type.
+Next, import the provided MIDI file and connect the MIDI Through Port:
 
-First, let's play a midi file using jack, MusE, and Qsynth.
+Import the example MIDI file:
+Download the daisy-bell.mid file attached to this tutorial and save it locally.
+Drag and drop the file onto the Part Canvas within MusE, creating a new part.
+Connect the MIDI Through Port:
+Navigate to the MusE Menu bar, select Options > MIDI Devices.
+On the Input tab, locate the empty row labelled 'MidiThruPort-0' and assign it to any available MIDI input by checking the respective boxes (e.g., ALSA sequencer Port-0). Click OK to close the dialog.
+Repeat the process for Output, connecting 'MidiThruPort-0' to the same MIDI output.
+After completing the setup, begin playing the imported MIDI sequence and run the provided Python script to capture incoming MIDI messages:
+
+Begin playback within MusE:
+Press the spacebar to initiate playback, allowing the Daisy Bell sequence to loop continuously.
+Run the Python script:
+Open a separate terminal window and navigate to the directory housing the midi_through_port_test.py file.
+Execute the script by entering python3 midi_through_port_test.py, pressing Enter. Real-time MIDI messages will now print in the console alongside timestamps.
+Congratulations! By following this tutorial, you have successfully captured MIDI events from a DAW using Python and the MIDI Through Port. Feel free to explore further possibilities with MIDI and Python. Experiment with different tools, libraries, and techniques, pushing the boundaries of musical creativity and automation. Happy exploring!
