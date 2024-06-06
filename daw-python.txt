@@ -14,29 +14,24 @@ Todo: test no realtime priority
 
 Start Jack using qjackctl:
 Keep in mind that modifying the master volume control on your computer while Jack is running does not affect the playback levels. Turn up the volume before starting Jack.
-Launch qjackctl and click 'Start'. If Jack fails to launch initially, try again. Sometimes jack will fail to launch the first time and suceed the second time without any change. If that doesn't work, adjust the settings under 'Setup', specifically the Interface, Sample Rate, Frames/Period, and Periods/Buffer options, until Jack runs smoothly. Finally, try rebooting your PC if you continue having issues with Jack.
-Ensure that the MIDI Driver setting is set to 'seq'.
-Configure audio and MIDI devices:
-Set up your audio device(s) within qjackctl by selecting the desired driver, input channels, output channels, and buffer size.
-Check the box next to 'Capture MIDI ports' and verify that both the ALSA sequencer client and the corresponding MIDI inputs appear in the list below.
-Prepare your system for optimal performance:
+
+Launch qjackctl. Ensure that the MIDI Driver setting in Setup is set to 'seq'.
+Launch jack by clicking 'Start'. If Jack fails to launch initially, try again. Sometimes jack will fail to launch the first time and suceed the second time without any change. If that doesn't work, adjust the settings under 'Setup', specifically the Interface, Sample Rate, Frames/Period, and Periods/Buffer options, until Jack runs smoothly. Finally, try rebooting your PC if you continue having issues with Jack.
 Now, proceed with launching MusE and Qsynth:
 
-Open MusE:
+Launch MusE.
 You may be asked to send Instrument Initialization Sequences. It doesn't matter for this tutorial, but I recommend you choose Yes here.
 
-Initialize Qsynth:
-Within Qsynth, click Setup, then Soundfonts. load a SoundFont bank by clicking the folder icon and choosing one from your collection. It should show you options from the default sf2 folder. Additional soundfonts may be aquired by downloading additional packages. (Todo: make a page on this and where each one downloads the sf2 files). 
+Launch Qsynth.
+Within Qsynth, click Setup, then Soundfonts. load a SoundFont bank by clicking Open and choosing a soundfont from your collection. It should show you options from the default sf2 folder. You will only need to do this the first time you run qsynth. Additional soundfonts may be aquired by downloading additional packages. (Todo: make a page on this and where each one downloads the sf2 files). 
 
+Click yes to restart the audio engine.
 
 Import the example MIDI file:
-Download the daisy-bell.mid file attached to this (link) tutorial and save it locally.
-Drag and drop the file onto the Part Canvas within MusE. Click Add To Project.
-
-After completing the setup, begin playing the imported MIDI sequence and run the provided Python script to capture incoming MIDI messages:
+Drag and drop the daisy-bell.mid file you downloaded from the previous tutorial onto the Part Canvas within MusE. Click Add To Project.
 
 Run the Python script:
-Open a separate terminal.
+Open a terminal.
 
 Move to the midi-tutorial folder from the previous tutorial
 
