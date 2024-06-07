@@ -41,6 +41,8 @@
             * {
                 font-family: sans-serif;
             }
+            div {
+            }
             .spacer {
                 width: 200px;
                 background-color: var(--color1);
@@ -268,13 +270,26 @@
             .footer-text {
                 font-size: 13px;
             }
-            @media (min-width: 300px) {
-                video {
-                    width: 250px;
+            line-spacer {
+                height: 20px;
+            } 
+            @media (min-width: 800px) {
+                video, .screenshot {
+                    width: 720px;
                 }
             }
-            @media (max-width: 300px) {
-                video {
+            @media (max-width: 800px) {
+                video, .screenshot {
+                    width: 100%;
+                }
+            }
+            @media (min-width: 800px) {
+                .screenshot {
+                    width: 772px;
+                }
+            }
+            @media (max-width: 800px) {
+                .screenshot {
                     width: 100%;
                 }
             }
@@ -337,11 +352,11 @@
                             </ul>
                         </div>
                     </div>
-                    <a href="videos/large/create-directory.mp4">
-                        <video autoplay muted>
+                    <!-- a href="videos/large/create-directory.mp4">
+                        <video autoplay loop muted>
                             <source src="videos/small/create-directory-small.mp4" />
                         </video>
-                    </a>
+                    </a -->
                 </div>
                 <div class="section">
                     <h2>MIDI File</h2>
@@ -365,11 +380,11 @@
                             </ul>
                         </div>
                     </div>
-                    <a href="videos/large/midi-file.mp4">
-                        <video autoplay muted>
+                    <!-- a href="videos/large/midi-file.mp4">
+                        <video autoplay loop muted>
                             <source src="videos/small/midi-file-small.mp4" />
                         </video>
-                    </a>
+                    </a -->
                 </div>
                 <div class="section">
                     <h2>
@@ -399,10 +414,11 @@
                         </div>
                     </div>
                     <a href="videos/large/installation-and-setup.mp4">
-                        <video autoplay muted>
+                        <video autoplay loop muted onloadstart="this.playbackRate = 2.0;">
                             <source src="videos/small/installation-and-setup-small.mp4" />
                         </video>
                     </a>
+                    <div class="line-spacer">&nbsp;</div>
                 </div>
                 <div class="section">
                     <h2>
@@ -423,11 +439,11 @@
                             </ul>
                         </div>
                     </div>
-                    <a href="videos/large/alsa-workaround.mp4">
-                        <video autoplay muted>
+                    <!-- a href="videos/large/alsa-workaround.mp4">
+                        <video autoplay loop muted>
                             <source src="videos/small/alsa-workaround-small.mp4" />
                         </video>
-                    </a>
+                    </a -->
                 </div>
                 <div class="section">
                     <h2>
@@ -460,11 +476,11 @@ while True:
 </pre>
 
 
-                    <a href="videos/large/write-the-python-script.mp4">
-                        <video autoplay muted>
+                    <!-- a href="videos/large/write-the-python-script.mp4">
+                        <video autoplay loop muted>
                             <source src="videos/small/write-the-python-script-small.mp4" />
                         </video>
-                    </a>
+                    </a -->
                 </div>
                 <div class="section">
                     <h2>
@@ -483,10 +499,12 @@ while True:
                         </div>
                     </div>
                     <a href="videos/large/running-the-script.mp4">
-                        <video autoplay muted>
+                        <!-- video autoplay loop muted>
                             <source src="videos/small/running-the-script-small.mp4" />
-                        </video>
+                        </video -->
+                        <img class="screenshot" src="running-the-script.png" />
                     </a>
+                    <div class="line-spacer">&nbsp;</div>
                 </div>
                 <div class="section">
                     <h2>
@@ -508,10 +526,12 @@ while True:
                         Note the number after "client" on the line titled "Midi Through". This is the port you will play the MIDI file through.
                     </p>
                     <a href="videos/large/getting-the-midi-through-port.mp4">
-                        <video autoplay muted>
+                        <!-- video autoplay loop muted>
                             <source src="videos/small/getting-the-midi-through-port-small.mp4" />
-                        </video>
+                        </video -->
+                        <img class="screenshot" src="getting-the-midi-through-port.png" />
                     </a>
+                    <div class="line-spacer">&nbsp;</div>
                 </div>
                 <div class="section">
                     <h2>
@@ -530,10 +550,11 @@ while True:
                         </div>
                     </div>
                     <a href="videos/large/playing-the-midi-file.mp4">
-                        <video autoplay muted>
+                        <video autoplay loop muted onloadstart="this.playbackRate = 2.0;">
                             <source src="videos/small/playing-the-midi-file-small.mp4" />
                         </video>
                     </a>
+                    <div class="line-spacer">&nbsp;</div>
                 </div>
                 <div class="section">
                     <h2>
@@ -545,6 +566,7 @@ while True:
                     <p>
                         Happy Coding!
                     </p>
+                    <div class="line-spacer">&nbsp;</div>
                 </div>
             </div>
             <div class="spacer"></div>
