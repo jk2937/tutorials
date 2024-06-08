@@ -5,6 +5,9 @@ html {
     -webkit-text-size-adjust: none;
     text-size-adjust: none;
 }
+h2 {
+    margin: 0px;
+}
 
 @media only screen and (min-width: 0px) and (max-width: 750px) {
     a:link{color:#1489B8}
@@ -55,7 +58,7 @@ html {
         font-size: 15px;
     }
     .section {
-        padding-bottom: 20px;
+        padding-bottom: 15px;
     }
 
     .terminal {
@@ -171,7 +174,7 @@ html {
         font-size: 15px;
     }
     .section {
-        padding-bottom: 20px;
+        padding-bottom: 15px;
     }
 
     .terminal {
@@ -291,7 +294,7 @@ html {
         font-size: 15px;
     }
     .section {
-        padding-bottom: 20px;
+        padding-bottom: 15px;
     }
 
     .terminal {
