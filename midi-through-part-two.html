@@ -1,0 +1,163 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+        <meta name="description" content="Learn how to interface a MIDI player with Python using the through port to capture and display incoming MIDI messages in real-time.">
+        <meta name="keywords" content="pygame, midi, python, through port, integration, music, project, sync, motor movement, light, LED, automation, control">
+        <meta name="author" content="Jonny">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" href="style.css" />
+
+    </head>
+    <body>
+        <div class="content-container-outer">
+            <div class="header-titles">
+                <h1 class="content-container-header-h1">Jonny's Tutorials</h1>
+                <h2 class="content-container-header-h2">Linux, Python, and so much more!</h2>
+            </div>
+            <div>
+                <img src="flying-turtle.png" class="flying-turtle"/>
+            </div>
+        </div>
+        <div class="gray">
+            <div class="spacer"></div>
+            <div class="content-container">
+                <div class="section">
+                    <h1>
+                        MIDI Through Port Part Two
+                    </h1>
+                    <p>
+                        Welcome to Jonny's Tutorials! In this tutorial, you will learn how to capture MIDI events from a digital audio workstation (DAW) in real-time using the MusE DAW in Linux, the MIDI Through Port, and Python. While MusE has its own Python interface, this tutorial utilizes the MIDI Through Port to ensure compatibility with other software such as aplaymidi.
+                    </p>
+                    <p>
+                        This tutorial assumes you've gone through Tutorial Part One, which focuses on creating a basic MIDI Through Port reader using Python in Linux. 
+                    </p>
+                </div>
+                <div class="section">
+                    <h2>
+                        Install packages
+                    </h2>
+                    <p>
+                        To get started, install the required packages using the following command in your terminal:
+                    </p>
+                    <div class="terminal">
+                        <ul class="terminal-list">
+                            <li>
+                                sudo apt-get install qjackctl muse qsynth
+                            </li>
+                        </ul>
+                    </div>
+                    <p>
+                        For this tutorial, it doesn't matter if you agree to enable real-time priority when asked. I chose to accept it during my setup.
+                    </p>
+                    <!-- Todo: test no realtime priority -->
+                </div>
+                <div class="section">
+                    <h2>
+                        Launch Jack
+                    </h2>
+                    <p>
+                        Now we will start jack using qjackctl. Be aware that changing the master volume control after starting Jack has no effect on playback levels. Make certain to increase the volume beforehand.
+                    </p>
+                    <p>
+                        Double-check that the MIDI Driver in qjackctl's Setup menu is configured as 'seq.'
+                    </p>
+                    <p>
+                        Press 'Start' to launch Jack. If jack fails to launch on the first attempt, try again. At times, Jack launches successfully on the second attempt despite identical settings.
+                    </p>
+                    <p>
+                        If you have issues, adjust the Interface, Sample Rate, Frames/Period, and Periods/Buffer parameters in 'Setup'. Rebooting your PC and try again if problems persist.
+                    </p>
+                </div>
+                <div class="section">
+                    <h2>
+                        Launch MusE
+                    </h2>
+                    <p>
+                        Now, launch MusE. You may be prompted to send Instrument Initialization Sequences; for the purposes of this tutorial, it does not matter whether you select 'Yes' or 'No,'. I recommend clicking 'Yes'.
+                    </p>
+                </div>
+                <div class="section">
+                    <h2>
+                        Launch Qsynth
+                    </h2>
+                    <p>
+                        Now, let's move on to setting up Qsynth. To begin, open Qsynth and click on 'Setup' followed by 'Soundfonts.' From there, you can load a SoundFont bank by clicking 'Open' and browsing through your collection. You should see options available from the default SF2 folder. After selecting the soundfont click yes to restart the audio engine.
+                    </p>
+                    <p>
+                        Note that you only need to complete this process once. 
+                    </p>
+                </div>
+                <div class="section">
+                    <h2>
+                        Import the example MIDI file into MusE
+                    </h2>
+                    <p>
+                        Next, we're going to import the example MIDI file. First, locate the daisy-bell.mid file you downloaded from the previous tutorial. Then, drag and drop it onto the Part Canvas within MusE. Finally, click 'Add To Project.'
+                    </p>
+                </div>
+                <div class="section">
+                    <h2>
+                        Launch the Python script:
+                    </h2>
+                    <p>
+                        It's time to run our Python script. Open a terminal window and navigate to the midi-tutorial directory using the command line. Enter the following commands:
+                    </p>
+                    <div class="terminal">
+                        <ul class="terminal-list">
+                            <li>
+                                cd midi-tutorial/
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- todo: change to ~/midi-tutorial -->
+                    <p>
+                        Then activate the virtual environment and execute the script:
+                    </p>
+                    <div class="terminal">
+                        <ul class="terminal-list">
+                            <li>
+                                source venv/bin/activate
+                            </li>
+                            <li>
+                                python3 midi_through_port_test.py
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="section">
+                    <h2>
+                        Begin playback within MusE:
+                    </h2>
+                    <p>
+                        Click the Play button located near the top left corner of the MusE interface to initiate playback.
+                    </p>
+                    <p>
+                        Real-time MIDI messages will now print in the console alongside timestamps.
+                    </p>
+                    <p>
+                        Congratulations! By following this tutorial, you have successfully captured MIDI events from a DAW using Python and the MIDI Through Port. Feel free to explore further possibilities with MIDI and Python. 
+                    </p>
+                    <p>
+                        To finish up, close qsynth, and MusE, stop jack using qjackctl, then close qjackctl.
+                    </p>
+                    <!-- Todo: Check headings, colon, capitalization of technology names -->
+                </div>
+            </div>
+            <div class="spacer"></div>
+        </div>
+        <div class="footer">
+            <div class="footer-spacer"></div>
+            <div class="content-container">
+                <div class="footer-p">
+                    <p class="footer-text">
+                        Do you have any questions or feedback, or just want to say "Hi"? Join my <a href="https://discord.gg/PhrjZMcY">Discord</a>!
+                    </p>
+                </div>
+            </div>
+            <div class="footer-spacer"></div>
+        </div>
+    </body>
+</html>
