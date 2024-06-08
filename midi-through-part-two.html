@@ -29,10 +29,13 @@
                         MIDI Through Port Part Two
                     </h1>
                     <p>
+                        (Last Updated: June 8, 2024)
+                    </p>
+                    <p>
                         Welcome to Jonny's Tutorials! In this tutorial, you will learn how to capture MIDI events from a digital audio workstation (DAW) in real-time using the MusE DAW in Linux, the MIDI Through Port, and Python. While MusE has its own Python interface, this tutorial utilizes the MIDI Through Port to ensure compatibility with other software such as aplaymidi.
                     </p>
                     <p>
-                        This tutorial assumes you've gone through Tutorial Part One, which focuses on creating a basic MIDI Through Port reader using Python in Linux. 
+                        If you haven't already done so, please <a href="midi-through-part-one.html">goto the first tutorial</a> and follow all the steps to install necessary packages, create your Python script, and test to see if it receives incoming MIDI messages. Once completed, return here, and we can continue our journey into working with MIDI data using Python!
                     </p>
                 </div>
                 <div class="section">
@@ -98,6 +101,53 @@
                         Next, we're going to import the example MIDI file. First, locate the daisy-bell.mid file you downloaded from the previous tutorial. Then, drag and drop it onto the Part Canvas within MusE. Finally, click 'Add To Project.'
                     </p>
                 </div>
+                <div class="section">
+                    <h2>
+                        Verify Track Settings
+                    </h2>
+                    <p>
+                        Click the newly created track
+                    </p>
+                    <p>
+                        click the input routing button
+                    </p>
+                    <p>
+                        hover over jack-midi-0
+                    </p>
+                    <p>
+                        verify the track's input is connected to the MIDI through.
+                    </p>
+                    <h2>
+                        Do the same for the output
+                    </h2>
+                    <p>
+                        click the output routing button
+                    </p>
+                    <p>
+                        hover over jack-midi-o
+                    </p>
+                    <p>
+                        verify the track's output is connected to the MIDI through.
+                    </p>
+                    <p>
+                        Goto qjackctl
+                    </p>
+                    <p>
+                        click graph
+                    </p>
+                    <p>
+                        verify qsynth output is connected to system playback
+                    </p>
+                    <p>
+                        verify midi through output is connected to fluid synth input
+                    </p>
+                    <p>
+                        test audio playback by clicking play
+                    </p>
+                    <p>
+                        if you hear playback congradulations.
+                    </p>
+                <div>
                 <div class="section">
                     <h2>
                         Launch the Python script:
