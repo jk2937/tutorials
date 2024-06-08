@@ -55,6 +55,14 @@
                     <p>
                         For this tutorial, it doesn't matter if you agree to enable real-time priority when asked. I chose to accept it during my setup.
                     </p>
+                    <div class="screenshot-container">
+                        <a href="midi-through-two-video/large/install-packages.mp4">
+                            <video autoplay loop muted onloadstart="this.playbackRate = 2.0;" poster="">
+                                <source src="midi-through-two-video/small/install-packages-small.mp4" />
+                            </video>
+                        </a>
+                    </div>
+                    <div class="line-spacer">&nbsp;</div>
                     <!-- Todo: test no realtime priority -->
                 </div>
                 <div class="section">
@@ -64,12 +72,36 @@
                     <p>
                         Now we will start jack using qjackctl. Be aware that changing the master volume control after starting Jack has no effect on playback levels. Make certain to increase the volume beforehand.
                     </p>
+                    <div class="screenshot-container">
+                        <a href="midi-through-two-video/large/launch-jack.mp4">
+                            <video autoplay loop muted onloadstart="this.playbackRate = 2.0;" poster="">
+                                <source src="midi-through-two-video/small/launch-jack-small.mp4" />
+                            </video>
+                        </a>
+                    </div>
+                    <div class="line-spacer">&nbsp;</div>
                     <p>
                         Double-check that the MIDI Driver in qjackctl's Setup menu is configured as 'seq.'
                     </p>
+                    <div class="screenshot-container">
+                        <a href="midi-through-two-video/large/midi-driver-seq.mp4">
+                            <video autoplay loop muted onloadstart="this.playbackRate = 2.0;" poster="">
+                                <source src="midi-through-two-video/small/midi-driver-seq-small.mp4" />
+                            </video>
+                        </a>
+                    </div>
+                    <div class="line-spacer">&nbsp;</div>
                     <p>
                         Press 'Start' to launch Jack. If jack fails to launch on the first attempt, try again. At times, Jack launches successfully on the second attempt despite identical settings.
                     </p>
+                    <div class="screenshot-container">
+                        <a href="midi-through-two-video/large/start-jack.mp4">
+                            <video autoplay loop muted onloadstart="this.playbackRate = 2.0;" poster="">
+                                <source src="midi-through-two-video/small/start-jack-small.mp4" />
+                            </video>
+                        </a>
+                    </div>
+                    <div class="line-spacer">&nbsp;</div>
                     <p>
                         If you have issues, adjust the Interface, Sample Rate, Frames/Period, and Periods/Buffer parameters in 'Setup'. Rebooting your PC and try again if problems persist.
                     </p>
@@ -81,6 +113,14 @@
                     <p>
                         Now, launch MusE. You may be prompted to send Instrument Initialization Sequences; for the purposes of this tutorial, it does not matter whether you select 'Yes' or 'No,'. I recommend clicking 'Yes'.
                     </p>
+                    <div class="screenshot-container">
+                        <a href="midi-through-two-video/large/launch-muse.mp4">
+                            <video autoplay loop muted onloadstart="this.playbackRate = 2.0;" poster="">
+                                <source src="midi-through-two-video/small/launch-muse-small.mp4" />
+                            </video>
+                        </a>
+                    </div>
+                    <div class="line-spacer">&nbsp;</div>
                 </div>
                 <div class="section">
                     <h2>
@@ -89,6 +129,22 @@
                     <p>
                         Now, let's move on to setting up Qsynth. To begin, open Qsynth and click on 'Setup' followed by 'Soundfonts.' From there, you can load a SoundFont bank by clicking 'Open' and browsing through your collection. You should see options available from the default SF2 folder. After selecting the soundfont click yes to restart the audio engine.
                     </p>
+                    <div class="screenshot-container">
+                        <a href="midi-through-two-video/large/launch-qsynth.mp4">
+                            <video autoplay loop muted onloadstart="this.playbackRate = 2.0;" poster="">
+                                <source src="midi-through-two-video/small/launch-qsynth-small.mp4" />
+                            </video>
+                        </a>
+                    </div>
+                    <div class="line-spacer">&nbsp;</div>
+                    <div class="screenshot-container">
+                        <a href="midi-through-two-video/large/qsynth-soundfont.mp4">
+                            <video autoplay loop muted onloadstart="this.playbackRate = 2.0;" poster="">
+                                <source src="midi-through-two-video/small/qsynth-soundfont-small.mp4" />
+                            </video>
+                        </a>
+                    </div>
+                    <div class="line-spacer">&nbsp;</div>
                     <p>
                         Note that you only need to complete this process once. 
                     </p>
@@ -100,6 +156,14 @@
                     <p>
                         Next, we're going to import the example MIDI file. First, locate the daisy-bell.mid file you downloaded from the previous tutorial. Then, drag and drop it onto the Part Canvas within MusE. Finally, click 'Add To Project.'
                     </p>
+                    <div class="screenshot-container">
+                        <a href="midi-through-two-video/large/import-midi-file.mp4">
+                            <video autoplay loop muted onloadstart="this.playbackRate = 2.0;" poster="">
+                                <source src="midi-through-two-video/small/import-midi-file-small.mp4" />
+                            </video>
+                        </a>
+                    </div>
+                    <div class="line-spacer">&nbsp;</div>
                 </div>
                 <div class="section">
                     <h2>
@@ -117,6 +181,14 @@
                     <p>
                         verify the track's input is connected to the MIDI through.
                     </p>
+                    <div class="screenshot-container">
+                        <a href="midi-through-two-video/large/adjust-input.mp4">
+                            <video autoplay loop muted onloadstart="this.playbackRate = 2.0;" poster="">
+                                <source src="midi-through-two-video/small/adjust-input-small.mp4" />
+                            </video>
+                        </a>
+                    </div>
+                    <div class="line-spacer">&nbsp;</div>
                     <h2>
                         Do the same for the output
                     </h2>
@@ -129,6 +201,14 @@
                     <p>
                         verify the track's output is connected to the MIDI through.
                     </p>
+                    <div class="screenshot-container">
+                        <a href="midi-through-two-video/large/adjust-output.mp4">
+                            <video autoplay loop muted onloadstart="this.playbackRate = 2.0;" poster="">
+                                <source src="midi-through-two-video/small/adjust-output-small.mp4" />
+                            </video>
+                        </a>
+                    </div>
+                    <div class="line-spacer">&nbsp;</div>
                     <p>
                         Goto qjackctl
                     </p>
@@ -141,12 +221,28 @@
                     <p>
                         verify midi through output is connected to fluid synth input
                     </p>
+                    <div class="screenshot-container">
+                        <a href="midi-through-two-video/large/adjust-graph.mp4">
+                            <video autoplay loop muted onloadstart="this.playbackRate = 2.0;" poster="">
+                                <source src="midi-through-two-video/small/adjust-graph-small.mp4" />
+                            </video>
+                        </a>
+                    </div>
+                    <div class="line-spacer">&nbsp;</div>
                     <p>
                         test audio playback by clicking play
                     </p>
                     <p>
                         if you hear playback congradulations.
                     </p>
+                    <div class="screenshot-container">
+                        <a href="midi-through-two-video/large/test-playback.mp4">
+                            <video autoplay loop muted onloadstart="this.playbackRate = 2.0;" poster="">
+                                <source src="midi-through-two-video/small/test-playback-small.mp4" />
+                            </video>
+                        </a>
+                    </div>
+                    <div class="line-spacer">&nbsp;</div>
                 <div>
                 <div class="section">
                     <h2>
@@ -176,6 +272,14 @@
                             </li>
                         </ul>
                     </div>
+                    <div class="screenshot-container">
+                        <a href="midi-through-two-video/large/launch-script.mp4">
+                            <video autoplay loop muted onloadstart="this.playbackRate = 2.0;" poster="">
+                                <source src="midi-through-two-video/small/launch-script-small.mp4" />
+                            </video>
+                        </a>
+                    </div>
+                    <div class="line-spacer">&nbsp;</div>
                 </div>
                 <div class="section">
                     <h2>
@@ -187,6 +291,14 @@
                     <p>
                         Real-time MIDI messages will now print in the console alongside timestamps.
                     </p>
+                    <div class="screenshot-container">
+                        <a href="midi-through-two-video/large/script-output.mp4">
+                            <video autoplay loop muted onloadstart="this.playbackRate = 2.0;" poster="">
+                                <source src="midi-through-two-video/small/script-output-small.mp4" />
+                            </video>
+                        </a>
+                    </div>
+                    <div class="line-spacer">&nbsp;</div>
                     <p>
                         Congratulations! By following this tutorial, you have successfully captured MIDI events from a DAW using Python and the MIDI Through Port. Feel free to explore further possibilities with MIDI and Python. 
                     </p>
