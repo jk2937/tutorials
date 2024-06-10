@@ -1,0 +1,6 @@
+sudo apt update
+sudo apt-get install nmap
+
+ip route show
+
+sudo nmap -sP 192.168.0.0/24
