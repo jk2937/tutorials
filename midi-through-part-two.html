@@ -1,5 +1,6 @@
 <!doctype html>
 <html>
+<!-- Todo: test no realtime priority -->
     <head>
         <meta charset="UTF-8">
         <title></title>
@@ -22,7 +23,6 @@
             </div>
         </div>
         <div class="gray">
-            <div class="spacer"></div>
             <div class="content-container">
                 <div class="section">
                     <h1>
@@ -51,7 +51,8 @@
                                 sudo apt-get install qjackctl muse qsynth
                             </li>
                         </ul>
-                    </div> <p> For this tutorial, it doesn't matter if you agree to enable real-time priority when asked. I chose to accept it during my setup.
+                    </div>
+                    <p> For this tutorial, it doesn't matter if you agree to enable real-time priority when asked. I chose to accept it during my setup.
                     </p>
                     <div class="screenshot-container">
                         <a href="midi-through-two-video/large/install-packages.mp4">
@@ -61,7 +62,6 @@
                         </a>
                     </div>
                     <div class="line-spacer">&nbsp;</div>
-                    <!-- Todo: test no realtime priority -->
                 </div>
                 <div class="section">
                     <h2>
@@ -70,37 +70,24 @@
                     <p>
                         Now we will start jack using qjackctl. Be aware that changing the master volume control after starting Jack has no effect on playback levels. Make certain to increase the volume beforehand.
                     </p>
-                    <!-- div class="screenshot-container">
+                    <div class="screenshot-container">
                         <a href="midi-through-two-video/large/launch-jack.mp4">
-                            <video autoplay loop muted onloadstart="this.playbackRate = 2.0;" poster="">
-                                <source src="midi-through-two-video/small/launch-jack-small.mp4" />
-                            </video>
                             <img class="screenshot" src="midi-through-two-screenshots/launch-jack.png" />
                         </a>
                     </div>
-                    <div class="line-spacer">&nbsp;</div -->
+                    <div class="line-spacer">&nbsp;</div>
                     <p>
                         Double-check that the MIDI Driver in qjackctl's Setup menu is configured as 'seq.'
                     </p>
                     <div class="screenshot-container">
                         <a href="midi-through-two-video/large/midi-driver-seq.mp4">
-                            <video autoplay loop muted onloadstart="this.playbackRate = 2.0;" poster="">
-                                <source src="midi-through-two-video/small/midi-driver-seq-small.mp4" />
-                            </video>
+                            <img class="screenshot" src="midi-through-two-screenshots/launch-jack-midi-driver-seq.png" />
                         </a>
                     </div>
                     <div class="line-spacer">&nbsp;</div>
                     <p>
                         Press 'Start' to launch Jack. If jack fails to launch on the first attempt, try again. At times, Jack launches successfully on the second attempt despite identical settings.
                     </p>
-                    <!-- div class="screenshot-container">
-                        <a href="midi-through-two-video/large/start-jack.mp4">
-                            <video autoplay loop muted onloadstart="this.playbackRate = 2.0;" poster="">
-                                <source src="midi-through-two-video/small/start-jack-small.mp4" />
-                            </video>
-                        </a>
-                    </div>
-                    <div class="line-spacer">&nbsp;</div -->
                     <p>
                         If you have issues, adjust the Interface, Sample Rate, Frames/Period, and Periods/Buffer parameters in 'Setup'. Rebooting your PC and try again if problems persist.
                     </p>
@@ -114,9 +101,6 @@
                     </p>
                     <div class="screenshot-container">
                         <a href="midi-through-two-video/large/launch-muse.mp4">
-                            <!-- video autoplay loop muted onloadstart="this.playbackRate = 2.0;" poster="">
-                                <source src="midi-through-two-video/small/launch-muse-small.mp4" />
-                            </video -->
                             <img class="screenshot" src="midi-through-two-screenshots/muse.png" />
                         </a>
                     </div>
@@ -129,14 +113,6 @@
                     <p>
                         Now, let's move on to setting up Qsynth. To begin, open Qsynth and click on 'Setup' followed by 'Soundfonts.' From there, you can load a SoundFont bank by clicking 'Open' and browsing through your collection. You should see options available from the default SF2 folder. After selecting the soundfont click yes to restart the audio engine.
                     </p>
-                    <!-- div class="screenshot-container">
-                        <a href="midi-through-two-video/large/launch-qsynth.mp4">
-                            <video autoplay loop muted onloadstart="this.playbackRate = 2.0;" poster="">
-                                <source src="midi-through-two-video/small/launch-qsynth-small.mp4" />
-                            </video>
-                        </a>
-                    </div>
-                    <div class="line-spacer">&nbsp;</div -->
                     <div class="screenshot-container">
                         <a href="midi-through-two-video/large/qsynth-soundfont.mp4">
                             <video autoplay loop muted onloadstart="this.playbackRate = 2.0;" poster="">
@@ -221,13 +197,6 @@
                     <p>
                         verify midi through output is connected to fluid synth input
                     </p>
-                    <!-- div class="screenshot-container">
-                        <a href="midi-through-two-video/large/adjust-graph.mp4">
-                            <video autoplay loop muted onloadstart="this.playbackRate = 2.0;" poster="">
-                                <source src="midi-through-two-video/small/adjust-graph-small.mp4" />
-                            </video>
-                        </a>
-                    </div -->
                     <div class="screenshot-container">
                         <img class="screenshot" src="midi-through-two-screenshots/adjust-graph1.png" />
                     </div>
@@ -250,7 +219,7 @@
                         </a>
                     </div>
                     <div class="line-spacer">&nbsp;</div>
-                <div>
+                </div>
                 <div class="section">
                     <h2>
                         Launch the Python script:
@@ -281,9 +250,6 @@
                     </div>
                     <div class="screenshot-container">
                         <a href="midi-through-two-video/large/launch-script.mp4">
-                            <!-- video autoplay loop muted onloadstart="this.playbackRate = 2.0;" poster="">
-                                <source src="midi-through-two-video/small/launch-script-small.mp4" />
-                            </video -->
                             <img class="screenshot" src="midi-through-two-screenshots/launch-script.png" />
                         </a>
                     </div>
@@ -316,7 +282,6 @@
                     <!-- Todo: Check headings, colon, capitalization of technology names -->
                 </div>
             </div>
-            <div class="spacer"></div>
         </div>
         <div class="footer">
             <div class="content-container">
